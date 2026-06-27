@@ -1,0 +1,22 @@
+SHORON WAITLIST — FORMSPREE CONNECTED
+
+Open this file after unzipping:
+shoron_waitlist_v4_3_premium_mobile.html
+
+Waitlist backend:
+https://formspree.io/f/xzdlrlle
+
+What this version does:
+- Saves form submissions to your Formspree dashboard.
+- Keeps a local browser backup only for debugging.
+- Sends these fields: name, phone, email, stage, institution, source, page, referrer, device, createdAt.
+- Google Analytics is intentionally not added yet.
+
+How to test:
+1. Open the HTML page.
+2. Submit one test signup.
+3. Go to your Formspree dashboard.
+4. Open the form named for this endpoint and check Submissions.
+
+Important:
+If Formspree asks you to verify/activate the form from your account/email, complete that once before public launch.
