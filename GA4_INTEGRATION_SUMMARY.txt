@@ -1,0 +1,15 @@
+Shoron GA4 integration completed.
+
+Measurement ID: G-1YSCP8N91V
+Formspree endpoint preserved: https://formspree.io/f/xzdlrlle
+Main deploy file: shoron_waitlist_v4_3_premium_mobile.html
+Backup file: ORIGINAL_BACKUP_DO_NOT_DEPLOY.html
+
+Tracked core outcome event:
+- waitlist_signup
+
+Suggested GA4 conversion/key event:
+- Mark waitlist_signup as a key event/conversion in Google Analytics.
+
+Recommended deploy file: index.html
+Alternative file: shoron_waitlist_v4_3_premium_mobile.html

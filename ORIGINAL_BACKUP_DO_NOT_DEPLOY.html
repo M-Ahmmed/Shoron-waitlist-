@@ -10,19 +10,6 @@
 <meta content="স্মরণ — Biology মুখস্থের ভয় কমাও" property="og:title"/>
 <meta content="Textbook page scan করে important line থেকে Bangla mnemonic আর recall card বানাও." property="og:description"/>
 <meta content="website" property="og:type"/>
-
-<!-- Google Analytics 4 — Shoron -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1YSCP8N91V"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-1YSCP8N91V', {
-    page_title: document.title,
-    page_path: window.location.pathname,
-    send_page_view: true
-  });
-</script>
 <style>
     :root {
       color-scheme: light;
@@ -2236,14 +2223,6 @@
     // Formspree saves each signup inside your Formspree dashboard.
     const WAITLIST_ENDPOINT = "https://formspree.io/f/xzdlrlle";
 
-    function trackEvent(eventName, eventParams = {}) {
-      if (typeof window.gtag !== "function") return;
-      window.gtag("event", eventName, {
-        app_name: "shoron_waitlist",
-        ...eventParams
-      });
-    }
-
     const root = document.documentElement;
     const themeToggle = document.getElementById("themeToggle");
     const savedTheme = localStorage.getItem("shoron_theme");
@@ -2253,16 +2232,13 @@
       const next = root.dataset.theme === "dark" ? "light" : "dark";
       root.dataset.theme = next;
       localStorage.setItem("shoron_theme", next);
-      trackEvent("theme_toggle", { theme: next });
     });
 
     const answerBtn = document.getElementById("answerBtn");
     const answerText = document.getElementById("answerText");
     answerBtn.addEventListener("click", () => {
       answerText.classList.toggle("show");
-      const isVisible = answerText.classList.contains("show");
-      answerBtn.textContent = isVisible ? "Hide answer" : "Reveal answer";
-      trackEvent("demo_answer_toggle", { state: isVisible ? "revealed" : "hidden" });
+      answerBtn.textContent = answerText.classList.contains("show") ? "Hide answer" : "Reveal answer";
     });
 
     const form = document.getElementById("waitlistForm");
@@ -2270,24 +2246,6 @@
     const shareRow = document.getElementById("shareRow");
     const whatsappBtn = document.getElementById("whatsappBtn");
     const copyBtn = document.getElementById("copyBtn");
-
-    document.querySelectorAll('a[href="#early-access"]').forEach((link) => {
-      link.addEventListener("click", () => {
-        trackEvent("waitlist_cta_click", {
-          cta_text: link.textContent.trim() || "Join waitlist",
-          source_section: link.closest("header") ? "nav" : "hero"
-        });
-      });
-    });
-
-    document.querySelectorAll('a[href="#demo"]').forEach((link) => {
-      link.addEventListener("click", () => {
-        trackEvent("demo_cta_click", {
-          cta_text: link.textContent.trim() || "See demo",
-          source_section: link.closest("header") ? "nav" : "hero"
-        });
-      });
-    });
 
     function normalizePhone(value) {
       return String(value || "").replace(/[^\d+]/g, "").trim();
@@ -2362,28 +2320,19 @@
       };
 
       if (payload.name.length < 2) {
-        trackEvent("waitlist_validation_error", { field: "name" });
         alert("Name ঠিকভাবে দাও.");
         return;
       }
 
       if (!isValidBDPhone(payload.phone)) {
-        trackEvent("waitlist_validation_error", { field: "phone" });
         alert("Valid Bangladeshi phone number দাও. Example: 01XXXXXXXXX");
         return;
       }
 
       if (payload.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
-        trackEvent("waitlist_validation_error", { field: "email" });
         alert("Email ঠিক না হলে blank রাখো.");
         return;
       }
-
-      trackEvent("waitlist_submit_attempt", {
-        stage: payload.stage,
-        source: payload.source,
-        has_email: Boolean(payload.email)
-      });
 
       const button = form.querySelector('button[type="submit"]');
       const original = button.textContent;
@@ -2392,22 +2341,11 @@
 
       try {
         await postToFormspree(payload);
-        trackEvent("waitlist_signup", {
-          stage: payload.stage,
-          source: payload.source,
-          method: "formspree",
-          has_email: Boolean(payload.email)
-        });
         button.textContent = "You're in";
         successBox.classList.add("show");
         shareRow.classList.add("show");
       } catch (error) {
         console.error(error);
-        trackEvent("waitlist_signup_error", {
-          stage: payload.stage,
-          source: payload.source,
-          message: error && error.message ? error.message.slice(0, 120) : "unknown"
-        });
         alert("Something went wrong. আবার try করো.");
         button.textContent = original;
         button.disabled = false;
@@ -2419,13 +2357,11 @@
     }
 
     whatsappBtn.addEventListener("click", () => {
-      trackEvent("waitlist_share_click", { channel: "whatsapp" });
       window.open("https://wa.me/?text=" + encodeURIComponent(shareText()), "_blank");
     });
 
     copyBtn.addEventListener("click", async () => {
       await navigator.clipboard.writeText(location.href);
-      trackEvent("waitlist_share_click", { channel: "copy_link" });
       copyBtn.textContent = "Copied";
       setTimeout(() => copyBtn.textContent = "Copy link", 1300);
     });

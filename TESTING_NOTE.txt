@@ -20,3 +20,33 @@ How to test:
 
 Important:
 If Formspree asks you to verify/activate the form from your account/email, complete that once before public launch.
+
+GOOGLE ANALYTICS UPDATE
+- GA4 Measurement ID connected: G-1YSCP8N91V
+- Standard Google tag (gtag.js) added inside the <head>.
+- Existing Formspree endpoint is preserved: https://formspree.io/f/xzdlrlle
+- Extra GA4 events added:
+  • waitlist_cta_click
+  • demo_cta_click
+  • demo_answer_toggle
+  • theme_toggle
+  • waitlist_submit_attempt
+  • waitlist_signup
+  • waitlist_signup_error
+  • waitlist_validation_error
+  • waitlist_share_click
+
+HOW TO VERIFY
+1. Deploy this HTML to Vercel.
+2. Open Google Analytics > Reports > Realtime.
+3. Open the live Shoron website in another tab.
+4. Within about 30-60 seconds, you should see 1 active user.
+5. Submit one test waitlist entry and check that the waitlist_signup event appears in Realtime / DebugView.
+
+SAFETY
+- Original file is included as ORIGINAL_BACKUP_DO_NOT_DEPLOY.html.
+- Deploy shoron_waitlist_v4_3_premium_mobile.html as the live page.
+
+DEPLOYMENT NOTE
+- I also included index.html with the same GA4-connected page, because Vercel/static hosting usually serves index.html at the root URL.
+- If your current deployment already uses a different file name, you can still use shoron_waitlist_v4_3_premium_mobile.html.
