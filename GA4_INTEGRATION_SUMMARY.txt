@@ -1,15 +1,17 @@
-Shoron GA4 integration completed.
+Shoron GA4 + Formspree status
 
-Measurement ID: G-1YSCP8N91V
+GA4 Measurement ID preserved: G-1YSCP8N91V
 Formspree endpoint preserved: https://formspree.io/f/xzdlrlle
-Main deploy file: shoron_waitlist_v4_3_premium_mobile.html
-Backup file: ORIGINAL_BACKUP_DO_NOT_DEPLOY.html
+Main deploy file: index.html
 
 Tracked core outcome event:
 - waitlist_signup
 
-Suggested GA4 conversion/key event:
-- Mark waitlist_signup as a key event/conversion in Google Analytics.
+Suggested GA4 setup:
+- Mark waitlist_signup as a key event/conversion inside Google Analytics.
 
-Recommended deploy file: index.html
-Alternative file: shoron_waitlist_v4_3_premium_mobile.html
+Speed update in v4.5:
+- Embedded image data was moved to /assets.
+- Large book-page image was optimized as WebP.
+- Preconnect/dns-prefetch hints were added for GA4 and Formspree.
+- Static asset cache headers were added through vercel.json.

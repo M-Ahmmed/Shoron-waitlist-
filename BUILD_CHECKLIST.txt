@@ -1,0 +1,11 @@
+Build checklist
+
+[OK] index.html exists at project root
+[OK] vercel.json exists at project root
+[OK] site.webmanifest exists at project root
+[OK] favicon files exist at project root
+[OK] GA4 Measurement ID present: G-1YSCP8N91V
+[OK] Formspree endpoint present: https://formspree.io/f/xzdlrlle
+[OK] assets folder included
+[OK] cache headers included
+[OK] static deploy ready

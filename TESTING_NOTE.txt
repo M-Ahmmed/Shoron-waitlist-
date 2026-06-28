@@ -1,52 +1,33 @@
-SHORON WAITLIST — FORMSPREE CONNECTED
+SHORON WAITLIST — DEPLOYMENT + TESTING
 
-Open this file after unzipping:
-shoron_waitlist_v4_3_premium_mobile.html
+Deploy this folder/zip to Vercel.
+Vercel should serve index.html automatically.
 
-Waitlist backend:
-https://formspree.io/f/xzdlrlle
+Connected services:
+- Google Analytics 4: G-1YSCP8N91V
+- Formspree: https://formspree.io/f/xzdlrlle
 
-What this version does:
-- Saves form submissions to your Formspree dashboard.
-- Keeps a local browser backup only for debugging.
-- Sends these fields: name, phone, email, stage, institution, source, page, referrer, device, createdAt.
-- Google Analytics is intentionally not added yet.
+How to verify after deploy:
+1. Open your live Vercel URL.
+2. Press Ctrl+U and search for G-1YSCP8N91V.
+3. Open Google Analytics → Reports → Realtime.
+4. Visit the live website from another tab or phone.
+5. Submit one test waitlist signup.
+6. Check Formspree submissions.
+7. In GA4, check for the event: waitlist_signup.
 
-How to test:
-1. Open the HTML page.
-2. Submit one test signup.
-3. Go to your Formspree dashboard.
-4. Open the form named for this endpoint and check Submissions.
+Tracked GA4 events:
+- waitlist_cta_click
+- demo_cta_click
+- demo_answer_toggle
+- theme_toggle
+- waitlist_submit_attempt
+- waitlist_signup
+- waitlist_signup_error
+- waitlist_validation_error
+- waitlist_share_click
 
-Important:
-If Formspree asks you to verify/activate the form from your account/email, complete that once before public launch.
-
-GOOGLE ANALYTICS UPDATE
-- GA4 Measurement ID connected: G-1YSCP8N91V
-- Standard Google tag (gtag.js) added inside the <head>.
-- Existing Formspree endpoint is preserved: https://formspree.io/f/xzdlrlle
-- Extra GA4 events added:
-  • waitlist_cta_click
-  • demo_cta_click
-  • demo_answer_toggle
-  • theme_toggle
-  • waitlist_submit_attempt
-  • waitlist_signup
-  • waitlist_signup_error
-  • waitlist_validation_error
-  • waitlist_share_click
-
-HOW TO VERIFY
-1. Deploy this HTML to Vercel.
-2. Open Google Analytics > Reports > Realtime.
-3. Open the live Shoron website in another tab.
-4. Within about 30-60 seconds, you should see 1 active user.
-5. Submit one test waitlist entry and check that the waitlist_signup event appears in Realtime / DebugView.
-
-SAFETY
-- Original file is included as ORIGINAL_BACKUP_DO_NOT_DEPLOY.html.
-- Deploy shoron_waitlist_v4_3_premium_mobile.html as the live page.
-
-DEPLOYMENT NOTE
-- I also included index.html with the same GA4-connected page, because Vercel/static hosting usually serves index.html at the root URL.
-- If your current deployment already uses a different file name, you can still use shoron_waitlist_v4_3_premium_mobile.html.
+If Wi-Fi is still slow:
+- Test from mobile data and another Wi-Fi.
+- If only one Wi-Fi is slow, it is likely ISP/DNS/routing, not site code.
+- The code is now much lighter, but no website code can fully fix a bad ISP route.
