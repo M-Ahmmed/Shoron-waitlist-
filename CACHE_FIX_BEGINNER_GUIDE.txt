@@ -1,0 +1,37 @@
+SHORON WAITLIST — CACHE FIX BEGINNER GUIDE
+
+What I changed:
+- I only updated vercel.json.
+- I added CDN cache headers for / and /index.html.
+- Existing index.html, Formspree endpoint, Google Analytics, assets, favicon files, and site behavior are preserved.
+
+How to use this ZIP:
+1. Download and unzip this package.
+2. Copy ALL files and folders from inside this package.
+3. Paste them into your existing shoron-waitlist folder.
+4. When your computer asks whether to replace files, choose Replace / Overwrite.
+5. Open VS Code in the shoron-waitlist folder.
+6. Run these commands:
+
+   git status
+   git add .
+   git commit -m "Improve Vercel CDN cache headers"
+   git push
+
+7. Vercel should redeploy automatically.
+8. After deployment finishes, open:
+
+   https://shoron-waitlist.vercel.app/
+
+9. Test the waitlist form once. Formspree is still connected.
+
+Optional check after deployment:
+Run this in terminal:
+
+   curl -I https://shoron-waitlist.vercel.app/
+
+You should see cache-control related headers.
+
+Important:
+- Do not upload only index.html. Keep the assets folder and vercel.json.
+- If the site still sometimes loads slowly, the next diagnosis should be Vercel Speed Insights or browser Network tab, not more redesign.
